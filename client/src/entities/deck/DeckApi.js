@@ -1,6 +1,6 @@
 const getDeckById = async (deckId) => {
     try {
-      const response = await fetch(`/api/deck/${deckId}`);
+      const response = await fetch(`/api/deck/`);
       if (!response.ok) {
         throw new Error('Ошибка загрузки колоды');
       }
