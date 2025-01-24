@@ -3,6 +3,7 @@ import Nav from "../widgets/Nav/Nav";
 import HomePage from "../pages/HomePage/HomePage";
 import RegistrationPage from "../pages/RegistrationPage/RegistrationPage";
 //import DeckPage from '../pages/DeckPage/DeckPage';
+import CardPage from '../pages/CardPage/CardPage';
 
 
 const router = createBrowserRouter([
@@ -18,6 +19,14 @@ const router = createBrowserRouter([
         path: '/tasks',
         element: <TasksPage />
       },*/
+      // {
+      //   path: '/tasks',
+      //   element: <TasksPage />
+      // },
+      {
+        path: 'deck/:id/card',
+        element: <CardPage />
+      },
       {
         path: '/registration',
         element: <RegistrationPage />
