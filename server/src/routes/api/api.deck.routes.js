@@ -83,7 +83,7 @@ router.route('/:id/card')
     .get(async (req,res) => {
         try {
             const { id } = req.params;
-            const allCards = await Card.findAll({ where: { deck_id: id } });
+            const allCards = await Card.findAll();
             if (allCards.lenght === 0 ) {
                 res.status(204).json(formatResponse(204, 'No content'))
             } else {
