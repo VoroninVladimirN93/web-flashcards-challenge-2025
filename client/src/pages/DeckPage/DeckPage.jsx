@@ -1,25 +1,65 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import DeckApi from '../../api/DeckApi';
 
-function DeckPage(props) {
+function DeckPage() {
+  const { deckId } = useParams(); // Получаем deckId из URL
+  const navigate = useNavigate(); 
+  const [deck, setDeck] = useState(null); /
+  const [loading, setLoading] = useState(true); 
+  const [error, setError] = useState(null); 
 
-    const mockDecks = [
-        {
-          id: 1,
-          title: "Deck 1",
-          img_path: "/images/deck1.jpg",
-        },
-        {
-          id: 2,
-          title: "Deck 2",
-          img_path: "/images/deck2.jpg",
-        },
-      ];
-      
-    return (
-        <div>
-            
-        </div>
-    );
+  // Загрузка колоды и её карт
+  useEffect(() => {
+    const fetchDeck = async () => {
+      try {
+        const deck = await DeckApi.getDeckById(deckId); // Запрос к API
+        setDeck(deck);
+      } catch (error) {
+        setError('Ошибка загрузки колоды');
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchDeck();
+  }, [deckId]);
+
+  // Переход на страницу с картами колоды
+  const handlePlayDeck = () => {
+    navigate(`/deck/${deckId}/card`); 
+  };
+
+  
+  if (loading) {
+    return <p>Загрузка...</p>;
+  }
+
+  
+  if (error) {
+    return <p>{error}</p>;
+  }
+
+  
+  return (
+    <div>
+      <h1>{deck.title}</h1>
+      <p>{deck.description}</p>
+
+      <h2>Темы игр (Карты колоды):</h2>
+      <ul>
+        {deck.Cards.map((card) => (
+          <li key={card.id}>
+            <strong>Вопрос:</strong> {card.question} <br />
+            <strong>Ответ:</strong> {card.answer}
+          </li>
+        ))}
+      </ul>
+
+      <button onClick={handlePlayDeck}>Играть с этой колодой</button>
+    </div>
+  );
 }
 
 export default DeckPage;
