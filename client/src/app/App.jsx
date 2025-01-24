@@ -1,9 +1,10 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Nav from "../widgets/Nav/Nav";
-import TasksPage from "../pages/TasksPage/TasksPage";
 import HomePage from "../pages/HomePage/HomePage";
 import RegistrationPage from "../pages/RegistrationPage/RegistrationPage";
+//import DeckPage from '../pages/DeckPage/DeckPage';
 import CardPage from '../pages/CardPage/CardPage';
+
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
         path: '/',
         element: <HomePage />
       },
+      /*{
+        path: '/tasks',
+        element: <TasksPage />
+      },*/
       // {
       //   path: '/tasks',
       //   element: <TasksPage />
@@ -25,7 +30,8 @@ const router = createBrowserRouter([
       {
         path: '/registration',
         element: <RegistrationPage />
-      }
+      },
+      
     ]
   }
 ])
