@@ -32,6 +32,7 @@ const CardCard = ({ id }) => {
   const [selectedOption, setSelectedOption] = useState(null); // Выбранный вариант ответа
   const [score, setScore] = useState(0); // Счет
   const [isAnswered, setIsAnswered] = useState(false); // Флаг, отвечен ли вопрос
+console.log(cards);
 
   // Получение данных с сервера
   useEffect(() => {
