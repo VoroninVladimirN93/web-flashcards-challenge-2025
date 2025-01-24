@@ -2,24 +2,195 @@
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
-    /**
-     * Add seed commands here.
-     *
-     * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
-     * }], {});
-    */
+  async up(queryInterface, Sequelize) {
+    await queryInterface.bulkInsert(
+      'Cards',
+      [
+        {
+          question: 'Какая игра изображена на скриншоте',
+          option1: 'Half-Life 2',
+          option2: '',
+          option3: '',
+          option4: '',
+          right_answer: 'Half-Life 2',
+          points: 10, // Добавляем поле points (если нужно)
+          img_path:
+            'https://hl2-beta.ru/gallery/12091990840_gs-summer-200422.jpg',
+          deck_id: 2, // Связь с колодой (Deck)
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          question: 'Какая игра изображена на скриншоте',
+          option1: 'The Elder Scrolls III: Morrowind',
+          option2: '',
+          option3: '',
+          option4: '',
+          right_answer: 'The Elder Scrolls III: Morrowind',
+          points: 10,
+          img_path:
+            'https://upload.wikimedia.org/wikipedia/ru/a/aa/The_Elder_Scrolls_III_Morrowind.jpg',
+          deck_id: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          question: 'Warcraft III: Reign of Chaos',
+          option1: 'testAnswer1',
+          option2: '',
+          option3: '',
+          option4: '',
+          right_answer: 'Warcraft III: Reign of Chaos',
+          points: 10,
+          img_path: 'https://igrovuha.org/uploads/posts/2019-05/1556739426_2.jpg',
+          deck_id: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          question: 'Какая игра изображена на скриншоте',
+          option1: 'Max Payne 2: The Fall of Max Payne',
+          option2: '',
+          option3: '',
+          option4: '',
+          right_answer: 'Max Payne 2: The Fall of Max Payne',
+          points: 10,
+          img_path:
+            'https://i.ytimg.com/vi/dygidc_kBCw/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AHUBoAC4AOKAgwIABABGGMgZShPMA8=&amp;rs=AOn4CLBj5sEXpYuPrwM4jonzOWUY6yFxXg',
+          deck_id: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          question: 'Какая игра изображена на скриншоте',
+          option1: 'God of War',
+          option2: '',
+          option3: '',
+          option4: '',
+          right_answer: 'God of War',
+          points: 10,
+          img_path: 'https://i.ytimg.com/vi/Km4930zxUfc/maxresdefault.jpg',
+          deck_id: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          question: 'Какая игра изображена на скриншоте',
+          option1: 'BioShock',
+          option2: '',
+          option3: '',
+          option4: '',
+          right_answer: 'BioShock',
+          points: 10,
+          img_path:
+            'https://digiseller.mycdn.ink/preview/467960/p1_2301517_0c2399fd.jpg',
+          deck_id: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          question: 'Какая игра изображена на скриншоте',
+          option1: 'Grand Theft Auto IV',
+          option2: '',
+          option3: '',
+          option4: '',
+          right_answer: 'Grand Theft Auto IV',
+          points: 10,
+          img_path:
+            'https://i.pinimg.com/originals/d2/b0/25/d2b025b2034e13088f5f9640d8e5d8d7.jpg',
+          deck_id: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          question: 'Какая игра изображена на скриншоте',
+          option1: 'Mass Effect',
+          option2: '',
+          option3: '',
+          option4: '',
+          right_answer: 'Mass Effect',
+          points: 10,
+          img_path: 'https://cdn.mos.cms.futurecdn.net/E8n7CK2eRyVyinjJpTr7u9.jpg',
+          deck_id: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          question: 'Какая игра изображена на скриншоте',
+          option1: 'Dishonored',
+          option2: '',
+          option3: '',
+          option4: '',
+          right_answer: 'Dishonored',
+          points: 10,
+          img_path:
+            'https://www.newgamenetwork.com/images/uploads/gallery/Dishonored/dishonored_01.jpg',
+          deck_id: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          question: 'Какая игра изображена на скриншоте',
+          option1: 'The Elder Scrolls V: Skyrim',
+          option2: '',
+          option3: '',
+          option4: '',
+          right_answer: 'The Elder Scrolls V: Skyrim',
+          points: 10,
+          img_path:
+            'https://cdn.mobygames.com/screenshots/2490934-the-elder-scrolls-v-skyrim-playstation-3-close-combat-with-the-c.jpg',
+          deck_id: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          question: 'Какая игра изображена на скриншоте',
+          option1: 'The Last of Us',
+          option2: '',
+          option3: '',
+          option4: '',
+          right_answer: 'The Last of Us',
+          points: 10,
+          img_path:
+            'https://static1.cbrimages.com/wordpress/wp-content/uploads/2022/07/The-Last-Of-Us-Part-1-Ellie-Joel.jpg',
+          deck_id: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          question: 'Какая игра изображена на скриншоте',
+          option1: 'Dark Souls II',
+          option2: '',
+          option3: '',
+          option4: '',
+          right_answer: 'Dark Souls II',
+          points: 10,
+          img_path:
+            'https://www.newgamenetwork.com/images/uploads/gallery/DarkSouls2/ds2_07.jpg',
+          deck_id: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          question: 'Какая игра изображена на скриншоте',
+          option1: 'Life is Strange',
+          option2: '',
+          option3: '',
+          option4: '',
+          right_answer: 'Life is Strange',
+          points: 10,
+          img_path:
+            'https://etgeekera.com/wp-content/uploads/2016/01/life-is-strange-screenshot-03.jpg?w=848',
+          deck_id: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+      ],
+      {}
+    );
   },
 
-  async down (queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
-  }
+  async down(queryInterface, Sequelize) {
+    await queryInterface.bulkDelete('Cards', null, {});
+  },
 };

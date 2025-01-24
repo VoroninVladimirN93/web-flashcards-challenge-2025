@@ -2,8 +2,8 @@ const express = require("express");
 const path = require("path");
 const morgan = require("morgan");
 const serverConfig = require('./config/serverConfig');
-const { Topic } = require("./db/models");
-const { Flashcard } = require("./db/models");
+const { Deck } = require("./db/models");
+const { Card } = require("./db/models");
 
 const app = express();
 const PORT = 3000;
@@ -18,45 +18,45 @@ serverConfig(app)
 //     res.json({ message: error.message });
 //   }
 // });
-app.get("/api/topics", async (req, res) => {
+app.get("/api/deck", async (req, res) => {
   try {
-    const allTopics = await Topic.findAll();
-    res.status(200).json(allTopics);
+    const allDecks = await Deck.findAll();
+    res.status(200).json(allDecks);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 });
-app.get("/flashcards", async (req, res) => {
-  try {
-    const allTopics = await Flashcard.findAll();
-    res.status(200).json(allTopics);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
-app.get("/topics/:id", async (req, res) => {
+// app.get("/Cards", async (req, res) => {
+//   try {
+//     const allDecks = await Card.findAll();
+//     res.status(200).json(allDecks);
+//   } catch (error) {
+//     res.status(500).json({ message: error.message });
+//   }
+// });
+// app.get("/Decks/:id", async (req, res) => {
+//   try {
+//     const { id } = req.params;
+//     const choisedDeckById = await Deck.findByPk(id);
+//     res.status(200).json(choisedDeckById);
+//   } catch (error) {
+//     res.status(500).json({ message: error.message });
+//   }
+// });
+// app.get("/Cards/:id", async (req, res) => {
+//   try {
+//     const { id } = req.params;
+//     const choisedCardById = await Card.findByPk(id);
+//     res.status(200).json(choisedCardById);
+//   } catch (error) {
+//     res.status(500).json({ message: error.message });
+//   }
+// });
+app.get("/api/deck/:id/card", async (req, res) => {
   try {
     const { id } = req.params;
-    const choisedTopicById = await Topic.findByPk(id);
-    res.status(200).json(choisedTopicById);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
-app.get("/flashcards/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    const choisedFlashcardById = await Flashcard.findByPk(id);
-    res.status(200).json(choisedFlashcardById);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
-app.get("/api/topics/:id/flashcards", async (req, res) => {
-  try {
-    const { id } = req.params;
-    const allFlashcards = await Flashcard.findAll({ where: { topic_id: id } });
-    res.status(200).json(allFlashcards);
+    const allCards = await Card.findAll({ where: { deck_id: id } });
+    res.status(200).json(allCards);
   } catch (error) {
     console.error(error);
     res
